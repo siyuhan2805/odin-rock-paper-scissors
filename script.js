@@ -94,8 +94,8 @@ const playGame = () => {
     //calls playRound function 5 times
     for (let i = 0; i < 5; i++) {
         playRound(getHumanChoice(), getComputerChoice());
-        console.log(humanScore);
-        console.log(computerScore);
+        // console.log(humanScore);
+        // console.log(computerScore);
     }
 
     //determine winner by passing global variables into determineWinner function
