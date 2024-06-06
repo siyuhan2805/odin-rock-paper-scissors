@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="./script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Seymour+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <!-- <script src="./script.js"></script> -->
 </head>
 <body>
-    
+    <header class="score-header">
+        <div class="container">
+            <div class="score-container">
+                <div class="scores">
+                    <h1 class="score">0</h1>
+                    <p class="player-title">AI</p>
+                </div>
+                <div class="scores">
+                    <h1 class="score">0</h1>
+                    <p class="player-title">You</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hand-section">
+            <img class="left-arm" src="./images/ai_arm_idle.svg" alt="image of a robotic arm">
+            <img class="right-arm" src="./images/human_arm_idle.svg" alt="image of human arm">
+        </section>
+
+        <section class="btn-section">
+            <div class="container">
+                <div class="btn-container">
+                    <button class="btn">
+                        <img src="./images/buttonRock.svg" alt="button with rock choice">
+                    </button>
+                    <button class="btn">
+                        <img src="./images/buttonPaper.svg" alt="button with rock choice">
+                    </button>
+                    <button class="btn">
+                        <img src="./images/buttonScissors.svg" alt="button with rock choice">
+                    </button>
+                </div>
+            </div> 
+        </section>
+
+    </main>
 </body>
 </html>
