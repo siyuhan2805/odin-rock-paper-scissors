@@ -5,6 +5,20 @@ humanScore = 0;
 computerScore = 0;
 
 
+//query selector to get an instance of all 3 buttons
+const buttons = document.querySelectorAll('button');
+//iterate through the buttons NodeList and assign an onclick listener to button
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(button.value, getComputerChoice());
+    })
+});
+
+//query selector to get instance of left and right arms
+const leftArm = document.querySelector('#left-arm');
+const rightArm = document.querySelector('#right-arm');
+
+
 //function returns a reandom string value of "rock", "paper" or "scissors" based on the number generated
 const getComputerChoice = () => {
     //random number generator between 1 (inclusive) and 9 (inclusive)
@@ -23,109 +37,101 @@ const getComputerChoice = () => {
     }
 }
 
-
-//recursive function to get human input and check for eronous inputs
-const getHumanChoice = () => {
-    //query selector to get an instance of all 3 buttons
-    const buttons = document.querySelectorAll('button');
-    //iterate through the buttons NodeList and assign an onclick listener to each for the click of the button
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            console.log(button.value);
-        })
-    })
+//function that takes humanChoice and getComputerChoice values as arguments and increments global variables depending on winner and outputs win/lose/tie message
+const playRound = (humanChoice, computerChoice) => {
+    //lowercasing all values
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
     
+    //testing
+    console.log(`Player chose ${humanChoice}`);
+    console.log(`AI chose ${computerChoice}`);
+
+    
+
+    //conditionals for all possible outcomes
+    if (humanChoice === "rock") {
+        //changing the imgs for left and right arms
+        rightArm.src = "./images/humanRock.svg";
+        //lose condition
+        if (computerChoice === "paper") {
+            leftArm.src = "./images/aiPaper.svg"
+            console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            computerScore++;
+        }
+        //win condition
+        else if (computerChoice === "scissors") {
+            leftArm.src = "./images/aiScissors.svg"
+            console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            humanScore++;
+        }
+        //tie condition
+        else {
+            leftArm.src = "./images/aiRock.svg"
+            console.log("Tie!");
+        }
+    }
+    else if (humanChoice === "paper") {
+        rightArm.src = "./images/humanPaper.svg";
+        //lose condition
+        if (computerChoice === "scissors") {
+            leftArm.src = "./images/aiScissors.svg"
+            console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            computerScore++;
+        }
+        //win condition
+        else if (computerChoice === "rock") {
+            leftArm.src = "./images/aiRock.svg"
+            console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            humanScore++;
+        }
+        //tie condition
+        else {
+            leftArm.src = "./images/aiPaper.svg"
+            console.log("Tie!");
+        } 
+    }
+    else if (humanChoice === "scissors") {
+        rightArm.src = "./images/humanScissors.svg";
+        //lose condition
+        if (computerChoice === "rock") {
+            leftArm.src = "./images/aiRock.svg"
+            console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            computerScore++;
+        }
+        //win condition
+        else if (computerChoice === "paper") {
+            leftArm.src = "./images/aiPaper.svg"
+            console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
+            humanScore++;
+        }
+        //tie condition
+        else {
+            leftArm.src = "./images/aiScissors.svg"
+            console.log("Tie!");
+        } 
+    }
+    //at round end display the updated score
+    //query select the player-score and ai-score elements 
+    const aiScore = document.querySelector("#ai-score");
+    const playerScore = document.querySelector("#player-score");
+    //updating the score h1 elements
+    aiScore.textContent = computerScore;
+    playerScore.textContent = humanScore;
+} 
+
+
+
+//function to determine winner based on the humanScore and computerScore arguments
+const determineWinner = (humanScore, computerScore) => {
+    if (humanScore > computerScore) {
+        console.log("The human wins!");
+    }
+    else if (computerScore > humanScore) {
+        console.log("The machine wins!")
+    }
+    else {
+        console.log("It's a tie!");
+    }
 }
 
-
-
-
-
-// //function that takes humanChoice and getComputerChoice values as arguments and increments global variables depending on winner and outputs win/lose/tie message
-// const playRound = (humanChoice, computerChoice) => {
-//     //lowercasing all values
-//     humanChoice = humanChoice.toLowerCase();
-//     computerChoice = computerChoice.toLowerCase();
-//     //conditionals for all possible outcomes
-//     if (humanChoice === "rock") {
-//         //lose condition
-//         if (computerChoice === "paper") {
-//             console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             computerScore++;
-//         }
-//         //win condition
-//         else if (computerChoice === "scissors") {
-//             console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             humanScore++;
-//         }
-//         //tie condition
-//         else {
-//             console.log("Tie!");
-//         }
-//     }
-//     else if (humanChoice === "paper") {
-//         //lose condition
-//         if (computerChoice === "scissors") {
-//             console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             computerScore++;
-//         }
-//         //win condition
-//         else if (computerChoice === "rock") {
-//             console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             humanScore++;
-//         }
-//         //tie condition
-//         else {
-//             console.log("Tie!");
-//         } 
-//     }
-//     else if (humanChoice === "scissors") {
-//         //lose condition
-//         if (computerChoice === "rock") {
-//             console.log("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             computerScore++;
-//         }
-//         //win condition
-//         else if (computerChoice === "paper") {
-//             console.log("You win! " + computerChoice[0].toUpperCase() + computerChoice.slice(1) + " loses to " + humanChoice[0].toUpperCase() + humanChoice.slice(1));
-//             humanScore++;
-//         }
-//         //tie condition
-//         else {
-//             console.log("Tie!");
-//         } 
-//     }
-// } 
-
-// //function to keep track of scores over 5 rounds of game and declare a winner
-// const playGame = () => {
-//     //calls playRound function 5 times
-//     for (let i = 0; i < 5; i++) {
-//         playRound(getHumanChoice(), getComputerChoice());
-//         // console.log(humanScore);
-//         // console.log(computerScore);
-//     }
-
-//     //determine winner by passing global variables into determineWinner function
-//     determineWinner(humanScore, computerScore);
-
-// }
-
-// //function to determine winner based on the humanScore and computerScore arguments
-// const determineWinner = (humanScore, computerScore) => {
-//     if (humanScore > computerScore) {
-//         console.log("The human wins!");
-//     }
-//     else if (computerScore > humanScore) {
-//         console.log("The machine wins!")
-//     }
-//     else {
-//         console.log("It's a tie!");
-//     }
-// }
-
-// //function call to run the game
-// playGame();
-
-//testing
-getHumanChoice();
