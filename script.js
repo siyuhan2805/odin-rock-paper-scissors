@@ -10,6 +10,15 @@ const buttons = document.querySelectorAll('button');
 //query selector to get instance of left and right arms
 const leftArm = document.querySelector('#left-arm');
 const rightArm = document.querySelector('#right-arm');
+//add event listener for animation end on both arms
+leftArm.addEventListener("animationend", () => {
+    leftArm.style.animation = "";
+})
+rightArm.addEventListener("animationend", () => {
+    rightArm.style.animation = "";
+})
+
+
 //iterate through the buttons NodeList and assign an onclick listener to button
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -17,20 +26,13 @@ buttons.forEach((button) => {
             playRound(button.value, getComputerChoice());
         }, 2000);
         //animation for 2 secs
-        resetAnimation(leftArm, "shakeAi");
-        resetAnimation(rightArm, "shakePlayer")
         leftArm.style.animation = "shakeAi 2s ease";
         rightArm.style.animation = "shakePlayer 2s ease";
+        //set the arm images src back to the default src 
+        resetArms();
+        
     });
 });
-
-//function to reset animation class after each click to ensure animation class can be re-assigned each round
-const resetAnimation = (element) => {
-    element.style.animation = "";
-}
-
-
-
 
 
 //function returns a reandom string value of "rock", "paper" or "scissors" based on the number generated
@@ -125,10 +127,16 @@ const playRound = (humanChoice, computerChoice) => {
     }
     //at round end display the updated score
     updateScore();
-
+    
 } 
 
-//function called to update the score
+//function to reset the images of the arms to the default images
+const resetArms = () => {
+    leftArm.src = "./images/ai_arm_idle.svg";
+    rightArm.src = "./images/human_arm_idle.svg";
+}
+
+//function to update the score
 const updateScore = () => {
     //query select the player-score and ai-score elements 
     const aiScore = document.querySelector("#ai-score");
