@@ -88,23 +88,23 @@ body {
 
 .left-arm {
     position: fixed;
-    width: 707px;
-    height: 803px;
-    transform:translate(0, 15%);
+    width: 1723px;
+    transform:translate(-35%, 0);
     top: 0;
     left: 0;
-    object-fit: cover;
+    transform-origin: left center;
     
 }
 
 .right-arm {
     position: fixed;
-    width: 707px;
-    height: 803px;
-    transform:translate(0, 15%);
+    width: 1723px;
+    transform:translate(35%, 0);
     top: 0;
     right: 0;
-    object-fit: cover;
+    transform-origin: right center;
+    
+    
 }
 
 /********************/
@@ -112,7 +112,6 @@ body {
 /********************/
 
 .btn-section {
-   
     padding: 6.4rem 0;
 }
 
@@ -120,3 +119,80 @@ body {
     display: flex;
     justify-content: center;
 }
+
+/********************/
+/* ANIMATION SECTION   */
+/********************/
+
+@keyframes shakeAi {
+    0% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+    15% {
+        transform: rotate(-10deg) translateX(-35%);
+    }
+    25% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+    35% {
+        transform: rotate(-10deg) translateX(-35%);
+    }
+    45% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+    55% {
+        transform: rotate(-10deg) translateX(-35%);
+    }
+    65% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+    75% {
+        transform: rotate(-10deg) translateX(-35%);
+    }
+    85% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+    95% {
+        transform: rotate(-10deg) translateX(-35%);
+    }
+    100% {
+        transform: rotate(20deg) translateX(-35%);
+    }
+}
+
+@keyframes shakePlayer {
+    0% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+    15% {
+        transform: rotate(10deg) translateX(35%);
+    }
+    25% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+    35% {
+        transform: rotate(10deg) translateX(35%);
+    }
+    45% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+    55% {
+        transform: rotate(10deg) translateX(35%);
+    }
+    65% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+    75% {
+        transform: rotate(10deg) translateX(35%);
+    }
+    85% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+    95% {
+        transform: rotate(10deg) translateX(35%);
+    }
+    100% {
+        transform: rotate(-20deg) translateX(35%);
+    }
+}
+
