@@ -1,3 +1,3 @@
 ### Rock Paper Scissors Project - TOP
 
-Committed code for an initial working console-only version of rock,paper,scissor
+Updated RPS game with UI elements and layout created by Facundo Cabanne & Midjourney from Figma
